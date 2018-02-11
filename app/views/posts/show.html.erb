@@ -2,3 +2,13 @@
 <%= link_to "(edit)", edit_post_path(@post) %></h2>
 <h4><%= @post.post_info%></h4>
 <h6>-- <%= @post.name%> </h6>
+
+<h3>Comments <%= link_to "Add Comment", new_post_comment_path( @post) %></h3>
+
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= link_to "#{comment.comment} --#{comment.name}", post_comment_path(@post, comment) %>
+    </li>
+  <% end %>
+</ul>
